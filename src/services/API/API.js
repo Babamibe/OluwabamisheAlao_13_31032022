@@ -13,7 +13,7 @@ export const getToken = () => {
 //     localStorage.removeItem("token")
 // }
 
-export const logInUser = (login, password) => {
+export const logInUser = (login, password, rememberMe) => {
     return async() => {
         try {
             const res = await fetch(`${BASE_URL}/user/login`, {
@@ -30,31 +30,14 @@ export const logInUser = (login, password) => {
             const data = await res.json()
             const token = data.body.token
             console.log("login data", data)
+            if(rememberMe) {
+                setToken(token)
+            }
             return token
         } catch(err) {
             console.error("err", err)
         }
     }
-    // fetch(`${BASE_URL}/user/login`, {
-    //     method: "POST",
-    //     headers: {
-    //         Accept: "application/json",
-    //         "Content-Type": "application/json",
-    //         },
-    //     body: JSON.stringify({
-    //         email: login,
-    //         password: password
-    //     })
-    // }).then( async (res) => {
-    //     if(res.ok) {
-    //         let jsonRes =  await res.json()
-    //         console.log("it works!", jsonRes)
-    //         const token = jsonRes.body.token
-    //         setToken(token)
-    //         return {token}
-    //     }
-    // })
-    // .catch(err => console.log(err))
 }   
 
 export const getUserInfo = (token) => {  

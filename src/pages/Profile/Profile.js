@@ -43,8 +43,7 @@ function Profile(props) {
         }))
     }
 
-    function handleSave(e) {
-        
+    function handleSave(e) {        
         e.preventDefault()
         console.log("saved!")
         updateUser(inputData.firstName, inputData.lastName, token)

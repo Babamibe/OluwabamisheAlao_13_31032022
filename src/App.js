@@ -5,7 +5,9 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import LogIn from './pages/LogIn/LogIn';
 import Profile from './pages/Profile/Profile';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserInfo } from './services/API/API';
+import { logIn, setUser } from './redux/features/userSlice';
 
 function App() {
   const loggedIn = useSelector(state => state.user.loggedIn)
@@ -27,6 +29,23 @@ function App() {
       element: <h1>Error 404</h1>
     }
   ])
+
+  // const LogToken = () => {
+  //   const dispatch = useDispatch()
+  //   async function logIfToken() {
+  //     const localToken = localStorage.getItem("token")
+  //     if(localToken) {
+  //       await dispatch(getUserInfo(localToken))
+  //       .then(data => {
+  //         dispatch(logIn(localToken))
+  //         dispatch(setUser(data))
+  //       })
+  //     }
+  //   }
+  //   logIfToken()
+  // }
+
+  // LogToken()
   
   return (
     

@@ -2,12 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from '../../assets/argentBankLogo.png'
 import "./Header.css"
-import store from "../../redux/store";
 import { logOut } from "../../redux/features/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function Header(props) {
-  let loggedIn = store.getState()
+  let loggedIn = useSelector((state) => state.user.loggedIn)
+  let user = useSelector((state) => state.user.currentUser)
   let dispatch = useDispatch()
     return (
        
@@ -18,14 +18,14 @@ function Header(props) {
                 </NavLink>
                 
                 {
-                loggedIn.user.loggedIn ? 
+                loggedIn ? 
                 (
                     <div>
                     <NavLink className="main-nav-item" to="/user">
                       <i className="fa fa-user-circle"></i>
-                      Tony
+                      {user.firstName}
                     </NavLink>
-                    <NavLink className="main-nav-item" to="/login" onClick={dispatch(logOut)}>
+                    <NavLink className="main-nav-item" to="/" onClick={dispatch(logOut)}>
                       <i className="fa fa-sign-out"></i>
                       Sign Out
                     </NavLink>
@@ -46,23 +46,3 @@ function Header(props) {
 
 export default Header;
 
- <nav className="main-nav">
-      <NavLink className="main-nav-logo" to="/">
-        <img
-          className="main-nav-logo-image"
-          src={logo}
-          alt="Argent Bank Logo"
-        />
-        <h1 className="sr-only">Argent Bank</h1>
-      </NavLink>
-      <div>
-        <NavLink className="main-nav-item" to="/user">
-          <i className="fa fa-user-circle"></i>
-          Tony
-        </NavLink>
-        <NavLink className="main-nav-item" to="/" onClick={store.dispatch(logOut)}>
-          <i className="fa fa-sign-out"></i>
-          Sign Out
-        </NavLink>
-      </div>
-    </nav> 

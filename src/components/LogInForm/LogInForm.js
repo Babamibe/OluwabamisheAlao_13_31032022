@@ -42,7 +42,7 @@ function LogInForm(props) {
     console.log("store state", store.getState())
     const handleSubmit = async(e) => {
       e.preventDefault()      
-      await dispatch(logInUser(username, password))
+      await dispatch(logInUser(username, password, rememberMe))
       .then(data => {
         console.log("normalement token",data)
         dispatch(logIn(data))
