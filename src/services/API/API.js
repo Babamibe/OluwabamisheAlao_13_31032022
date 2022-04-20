@@ -32,6 +32,8 @@ export const logInUser = (login, password, rememberMe) => {
             console.log("login data", data)
             if(rememberMe) {
                 setToken(token)
+                localStorage.setItem("username", login)
+                localStorage.setItem("pass", password)
             }
             return token
         } catch(err) {

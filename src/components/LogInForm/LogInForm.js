@@ -63,8 +63,7 @@ function LogInForm(props) {
             type="text" 
             id="username" 
             name='username'
-            value={formData.username}
-            autoComplete={rememberMe? username : ""}
+            value={rememberMe? localStorage.getItem("username") :formData.username}
             onChange={handleChange}
             />
           </div>
@@ -74,16 +73,15 @@ function LogInForm(props) {
             type="password" 
             id="password" 
             name='password'
-            value={formData.password}
+            value={rememberMe? localStorage.getItem("pass") : formData.password}
             onChange={handleChange}
-            autoComplete={rememberMe? password : ""}
             />
           </div>
           <div className="input-remember">
             <input type="checkbox" 
             id="remember-me" 
             name='rememberMe'
-            checked={formData.rememberMe}
+            checked={rememberMe ? rememberMe : localStorage.clear()}
             onChange={handleChange}
             />
             <label htmlFor="remember-me">Remember me</label>

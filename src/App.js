@@ -5,9 +5,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import LogIn from './pages/LogIn/LogIn';
 import Profile from './pages/Profile/Profile';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserInfo } from './services/API/API';
-import { logIn, setUser } from './redux/features/userSlice';
+import { useSelector } from 'react-redux';
 
 function App() {
   const loggedIn = useSelector(state => state.user.loggedIn)
@@ -29,6 +27,18 @@ function App() {
       element: <h1>Error 404</h1>
     }
   ])
+  
+  return (
+    
+    <div className="App">
+      <Header/>
+      {element}
+      <Footer/>
+    </div>
+  );
+}
+
+export default App;
 
   // const LogToken = () => {
   //   const dispatch = useDispatch()
@@ -46,15 +56,3 @@ function App() {
   // }
 
   // LogToken()
-  
-  return (
-    
-    <div className="App">
-      <Header/>
-      {element}
-      <Footer/>
-    </div>
-  );
-}
-
-export default App;

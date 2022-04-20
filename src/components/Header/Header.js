@@ -21,11 +21,11 @@ function Header(props) {
                 loggedIn ? 
                 (
                     <div>
-                    <NavLink className="main-nav-item" to="/user">
+                    <NavLink className="main-nav-item" to="/profile">
                       <i className="fa fa-user-circle"></i>
                       {user.firstName}
                     </NavLink>
-                    <NavLink className="main-nav-item" to="/" onClick={dispatch(logOut)}>
+                    <NavLink className="main-nav-item" to="/login" onClick={dispatch(logOut)}>
                       <i className="fa fa-sign-out"></i>
                       Sign Out
                     </NavLink>
