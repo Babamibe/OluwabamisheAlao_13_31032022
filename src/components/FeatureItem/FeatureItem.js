@@ -1,6 +1,12 @@
 import React from 'react';
 import './FeatureItem.css'
+import propTypes from 'prop-types'
 
+/**
+ * Display ARGENT BANK features
+ * @param {*} props 
+ * @returns component
+ */
 function FeatureItem(props) {
     return (
         <div className="feature-item">
@@ -12,3 +18,10 @@ function FeatureItem(props) {
 }
 
 export default FeatureItem;
+
+FeatureItem.propTypes = {
+  src: propTypes.string,
+  alt: propTypes.string,
+  title: propTypes.string,
+  content: propTypes.string
+}

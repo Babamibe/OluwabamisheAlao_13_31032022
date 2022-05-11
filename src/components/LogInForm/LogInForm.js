@@ -4,12 +4,14 @@ import './LogInForm.css'
 import { useNavigate } from 'react-router-dom';
 import { logIn } from '../../redux/features/userSlice';
 import { logInUser } from '../../services/API/API';
-import { useDispatch, useSelector } from 'react-redux';
-import store from '../../redux/store';
+import { useDispatch} from 'react-redux';
 
   
 
-
+/**
+ * Display logIn form
+ * @returns component
+ */
 function LogInForm(props) {
   
   
@@ -37,14 +39,10 @@ function LogInForm(props) {
     let password = formData.password
     let rememberMe = formData.rememberMe
   
-    let user = useSelector(state => state.user.token)
-    console.log("current token", user)
-    console.log("store state", store.getState())
     const handleSubmit = async(e) => {
       e.preventDefault()      
       await dispatch(logInUser(username, password, rememberMe))
       .then(data => {
-        console.log("normalement token",data)
         dispatch(logIn(data))
         //setToken(data)
         if(data){
@@ -64,6 +62,7 @@ function LogInForm(props) {
             id="username" 
             name='username'
             value={rememberMe? localStorage.getItem("username") :formData.username}
+            required
             onChange={handleChange}
             />
           </div>
@@ -74,6 +73,7 @@ function LogInForm(props) {
             id="password" 
             name='password'
             value={rememberMe? localStorage.getItem("pass") : formData.password}
+            required
             onChange={handleChange}
             />
           </div>

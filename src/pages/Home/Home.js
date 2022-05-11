@@ -3,6 +3,9 @@ import FeatureItem from '../../components/FeatureItem/FeatureItem';
 import Hero from '../../components/Hero/Hero';
 import { featureItemContent } from '../../data/featureItemContent';
 
+/**
+ * Home Page
+ */
 function Home(props) {
     return (
         <main>

@@ -2,6 +2,9 @@ import React from 'react';
 import LogInForm from '../../components/LogInForm/LogInForm';
 import './Login.css'
 
+/**
+ * Login page
+ */
 function LogIn(props) {
     return (
         <main className="main bg-dark">

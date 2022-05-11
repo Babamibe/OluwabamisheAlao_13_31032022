@@ -5,6 +5,11 @@ import "./Header.css"
 import { logOut } from "../../redux/features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
+
+/**
+ * Display header
+ * @returns component
+ */
 function Header(props) {
   let loggedIn = useSelector((state) => state.user.loggedIn)
   let user = useSelector((state) => state.user.currentUser)

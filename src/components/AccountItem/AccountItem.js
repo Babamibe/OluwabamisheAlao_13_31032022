@@ -1,7 +1,13 @@
 import React from 'react';
 import Button from '../Button/Button';
 import './AccountItem.css'
+import propTypes from 'prop-types'
 
+/**
+ * Display account item
+ * @param {*} props 
+ * @returns component
+ */
 function AccountItem(props) {
     return (
         <section className="account">
@@ -21,3 +27,9 @@ function AccountItem(props) {
 }
 
 export default AccountItem;
+
+AccountItem.propTypes = {
+  title : propTypes.string,
+  amount: propTypes.string,
+  description: propTypes.string
+}

@@ -1,6 +1,11 @@
 import React from 'react';
 import './Hero.css'
 
+/**
+ * Display hero section
+ * @param {*} props 
+ * @returns component
+ */
 function Hero(props) {
     return (
         <div className='hero'>

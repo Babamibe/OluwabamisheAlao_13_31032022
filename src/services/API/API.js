@@ -1,10 +1,17 @@
 
 const BASE_URL = "http://localhost:3001/api/v1"
 
+/**
+ * add token to storage
+ * @param {*} token 
+ */
 export const setToken = (token) => {
     localStorage.setItem("token", token)
 }
 
+/**
+ * get token from storage
+ */
 export const getToken = () => {
     localStorage.getItem("token")
 }
@@ -13,6 +20,13 @@ export const getToken = () => {
 //     localStorage.removeItem("token")
 // }
 
+/**
+ * API post call to get login token
+ * @param {String} login 
+ * @param {String} password 
+ * @param {Boolean} rememberMe 
+ * @returns {Object}
+ */
 export const logInUser = (login, password, rememberMe) => {
     return async() => {
         try {
@@ -29,7 +43,6 @@ export const logInUser = (login, password, rememberMe) => {
             })
             const data = await res.json()
             const token = data.body.token
-            console.log("login data", data)
             if(rememberMe) {
                 setToken(token)
                 localStorage.setItem("username", login)
@@ -42,6 +55,11 @@ export const logInUser = (login, password, rememberMe) => {
     }
 }   
 
+/**
+ * API post call to get user information
+ * @param {String} token 
+ * @returns {Object}
+ */
 export const getUserInfo = (token) => {  
     return async () => {
         try{
@@ -57,7 +75,6 @@ export const getUserInfo = (token) => {
             const email = body.email
             const firstName = body.firstName
             const lastName = body.lastName
-            console.log("getuserdata",data)
             return {email, firstName,lastName}
         } catch (err) {
             console.log('err',err)
@@ -65,7 +82,12 @@ export const getUserInfo = (token) => {
     } 
 }
 
-
+/**
+ * API put call to update user information
+ * @param {String} firstName 
+ * @param {String} lastName 
+ * @param {String} token 
+ */
 export const updateUser = (firstName, lastName, token) => {
     fetch(`${BASE_URL}/user/profile`, {
         method: "PUT",

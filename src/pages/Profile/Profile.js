@@ -7,6 +7,10 @@ import { setUser, updateInfo } from '../../redux/features/userSlice';
 import { getUserInfo, updateUser } from '../../services/API/API';
 import './Profile.css'
 
+
+/**
+ * Profile page
+ */
 function Profile(props) {
     
     const[inputData, setInputData] = React.useState({
@@ -22,11 +26,8 @@ function Profile(props) {
     React.useEffect(() => {
         
         const getUserProfile = async () =>{
-            
-            console.log("profile token", token)
             await dispatch(getUserInfo(token))
             .then(data => {
-            console.log("data", data)
             dispatch(setUser(data))
         })
         .catch((e)=> console.log("err", e))
@@ -45,7 +46,6 @@ function Profile(props) {
 
     function handleSave(e) {        
         e.preventDefault()
-        console.log("saved!")
         updateUser(inputData.firstName, inputData.lastName, token)
         dispatch(getUserInfo(token))
         .then(data => dispatch(updateInfo(data)))
@@ -55,7 +55,6 @@ function Profile(props) {
 
     let user = useSelector((state) => state.user.currentUser)
     
-    console.log('user', user)
     return (
         <main className="main bg-dark">
             <div className="header">
@@ -68,7 +67,7 @@ function Profile(props) {
                             id="firstName" 
                             name='firstName'
                             value={inputData.firstName}
-                            autoComplete={inputData.firstName}
+                            placeholder="First Name"
                             onChange={handleChange}
                             />
                             <input 
@@ -76,7 +75,7 @@ function Profile(props) {
                             id="lastName" 
                             name='lastName'
                             value={inputData.lastName}
-                            autoComplete={inputData.lastName}
+                            placeholder= "Last Name"
                             onChange={handleChange}
                             />
                         </div>

@@ -1,6 +1,11 @@
 import React from 'react';
 import './Footer.css'
 
+/**
+ * Display footer
+ * @returns component
+ */
+
 function Footer(props) {
     return (
         <footer className="footer">

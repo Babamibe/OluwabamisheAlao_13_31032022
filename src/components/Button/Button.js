@@ -1,5 +1,12 @@
 import React from 'react';
 import './Button.css'
+import propTypes from 'prop-types'
+
+/**
+ * Display button
+ * @param {*} props 
+ * @returns component
+ */
 
 function Button(props) {
     return (
@@ -8,3 +15,9 @@ function Button(props) {
 }
 
 export default Button;
+
+Button.propTypes = {
+    class: propTypes.string,
+    onClick: propTypes.func,
+    content: propTypes.string
+}
